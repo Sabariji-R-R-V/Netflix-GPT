@@ -4,6 +4,11 @@ import Header from "./Header";
 import { checkValidateData } from "../utils/validate";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword  } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
+import { updateProfile } from "firebase/auth";
+import { UserLogo } from "../utils/ImageUrls";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 
 
 const Login = () => {
@@ -13,6 +18,9 @@ const Login = () => {
     const email = useRef(null);
     const password = useRef(null);
     const fullname = useRef(null);
+
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const handleButtonSignIn = () => {
         if(fullname.current === null ) {
@@ -24,6 +32,7 @@ const Login = () => {
                 .then((userCredential) => {
                 const user = userCredential.user;
                 console.log("Sign In User ", user)
+                navigate("/browse");
             })
             .catch((error) => {
             const errorCode = error.code;
@@ -39,7 +48,20 @@ const Login = () => {
             createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
                 .then((userCredential) => {
                 const user = userCredential.user;
+                console.log("User in login page ", user);
+
+                updateProfile(user, {
+                    displayName: fullname.current.value, photoURL: UserLogo
+                  }).then(() => {
+                    const {uid, email, displayName, photoURL} = auth.currentUser;
+                    dispatch(addUser({uid: uid, email: email, displayName: displayName, photoURL: photoURL}));
+                    navigate("/browse")
+                  }).catch((error) => {
+                    SetErrorMessage(error.message)
+                  });
+
                 console.log("User ", user)
+                navigate("/browse");
             })
             .catch((error) => {
             const errorCode = error.code;
@@ -56,7 +78,7 @@ const Login = () => {
         <div>
             <Header />
             <div className="absolute">
-                <img src={LoginBgLogo} alt="logo" />
+                <img className="max-h-screen w-screen" src={LoginBgLogo} alt="logo" />
             </div>
             <form onSubmit={(e) => e.preventDefault()} className="absolute bg-black w-3/12 right-0 left-0 mx-auto my-36 text-white p-12 rounded-3xl opacity-85">
                 <h1 className="font-bold text-3xl py-4 m-2"> {isSignIn ? "Sign In" : "Sign Up"} </h1>
