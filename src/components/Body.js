@@ -30,7 +30,7 @@ const Body = () => {
               dispatch(removeUser());
             }
           });
-    }, [])
+    }, [dispatch])
     return (
         <RouterProvider router={appRouter}/>
     )
