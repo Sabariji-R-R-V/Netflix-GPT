@@ -7,7 +7,7 @@ import { auth } from "../utils/firebase";
 import { updateProfile } from "firebase/auth";
 import { UserLogo } from "../utils/ImageUrls";
 import { useDispatch } from "react-redux";
-import { addUser } from "../utils/userSlice";
+import { addUser } from "../store/userSlice";
 
 
 const Login = () => {
@@ -44,7 +44,6 @@ const Login = () => {
             createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
                 .then((userCredential) => {
                 const user = userCredential.user;
-                console.log("User in login page ", user);
 
                 updateProfile(user, {
                     displayName: fullname.current.value, photoURL: UserLogo

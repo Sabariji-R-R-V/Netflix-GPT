@@ -5,3 +5,5 @@ export const HeaderLogo = "https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9c
 export const UserLogo = "https://avatars.githubusercontent.com/u/81500896?v=4";
 
 export const MoviePoster = "https://image.tmdb.org/t/p/w500/";
+
+export const GptPageBackground = "https://images.unsplash.com/photo-1679083216051-aa510a1a2c0e?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";

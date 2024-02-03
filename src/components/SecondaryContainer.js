@@ -1,21 +1,19 @@
 import { useSelector } from "react-redux";
 import MoviesList from "./MoviesList";
+import lang from "../utils/langConstants";
 
 const SecondaryContainer = () => {
 
     const movies = useSelector(store => store.movies);
-    console.log("Movies in Secondary container ", movies);
-    console.log("NowPlaying Movies in Secondary container ", movies.nowPlayingMovies);
-    console.log("Popular Movies in Secondary container ", movies.popularMovies);
-    console.log("TopRated Movies in Secondary container ", movies.topRatedMovies);
-    console.log("Upcoming Movies in Secondary container ", movies.upcomingMovies);
+    const langSelected = useSelector(store => store.lang.selectedLang)
+    
     return (
     movies && (<div className=" bg-black">
         <div className="-mt-80 relative z-20 pl-12">
-            <MoviesList title="Now Playing" movies={movies.nowPlayingMovies} />
-            <MoviesList title="Popular" movies={movies.popularMovies} />
-            <MoviesList title="TopRated" movies={movies.topRatedMovies} />
-            <MoviesList title="Upcoming" movies={movies.upcomingMovies} />
+            <MoviesList title={lang[langSelected].nowPlaying} movies={movies.nowPlayingMovies} />
+            <MoviesList title={lang[langSelected].popular} movies={movies.popularMovies} />
+            <MoviesList title={lang[langSelected].topRated} movies={movies.topRatedMovies} />
+            <MoviesList title={lang[langSelected].upComing} movies={movies.upcomingMovies} />
         </div>
     </div>)
     )
