@@ -37,6 +37,8 @@
 - usePopularMovies custom hook
 - useTopRatedMovies custom hook
 - useUpcomingMovies custom hook
+- Using Gemini-GPT API for movie sugggestions
+- Stylings are implemented for mobile versions too...
 
 # Features
 
@@ -48,6 +50,7 @@
 - Browse (After Authentication)
 
   - Header
+     - Select Multi Languages
   - Main Movie
     - Trailer in Background
     - Title & Description
@@ -57,3 +60,13 @@
 - NetflixGPT
   - SearchBar
   - Movie Suggestions
+
+## Login page
+![image](https://github.com/Sabariji-R-R-V/Netflix-GPT/assets/81500896/926abf8e-3a08-4231-9254-7f64ce73e97f)
+
+## Home page
+![image](https://github.com/Sabariji-R-R-V/Netflix-GPT/assets/81500896/1fa63647-f28a-493d-ba46-babb61c26e70)
+
+## GPT page
+![image](https://github.com/Sabariji-R-R-V/Netflix-GPT/assets/81500896/eab093a6-c79f-4059-a5a9-1a22fa62daa2)
+
