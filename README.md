@@ -1,4 +1,4 @@
-# Netflix GPT
+# Flixify
 
 - create React App
 - Configured Tailwindcss
